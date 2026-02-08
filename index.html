@@ -1,26 +1,20 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Boilerplate for polaris chip">
-  <base href="/">
-
+  <title>polaris-chip / my-card</title>
   <style>
     :root,
     html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
+    body{
+      margin:0;
+      padding:0;
+      font-family:sans-serif;
+      background-color:#ededed;
     }
-    polaris-chip {
-      margin: 16px;
+    polaris-chip{
+      margin:16px;
     }
   </style>
-  <title>polaris-chip / my-card</title>
 </head>
 
 <body>
@@ -30,13 +24,51 @@
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
   <polaris-chip title="Grants and donations"></polaris-chip>
+  <polaris-chip></polaris-chip>
+  <polaris-chip></polaris-chip>
+  <polaris-chip></polaris-chip>
+
+  <span>just a span for comparison</span>
 
   <h1>my-card</h1>
-  <my-card></my-card>
+
+  <my-card
+    title="Cool hockey tourney"
+    image="https://raw.githubusercontent.com/jakebutler22/usahockeypicture/refs/heads/main/IMG_0416.jpeg"
+    alt="Hockey photo"
+    description="Playing hockey and inevitably lose to the Canadians."
+  ></my-card>
+
+  <my-card
+    title="Happy dog"
+    image="https://github.com/jakebutler22/usahockeypicture/blob/main/IMG_6680.jpeg?raw=true"
+    alt="Dog photo"
+    description="This is a the best card instance."
+  ></my-card>
+
+  <my-card
+    title="The Meat"
+    image="https://github.com/jakebutler22/pictures/blob/main/steak.jpeg?raw=true"
+    alt="Ribeye photo"
+    description="This will be such a good steak"
+  ></my-card>
+
+  <my-card
+    title="And The Potatoes"
+    image="https://github.com/jakebutler22/pictures/blob/main/potato.png?raw=true"
+    alt="potato photo"
+    description="Get it, the meat and potatoes."
+  ></my-card>
+
+  <my-card
+    title="Sadly, vegetables"
+    image="https://github.com/jakebutler22/pictures/blob/main/Vegebatle.png?raw=true"
+    alt="vegetables photo"
+    description="GET THIS AWAY FROM ME"
+  ></my-card>
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
 </body>
-
 </html>
