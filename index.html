@@ -14,12 +14,15 @@
     polaris-chip{
       margin:16px;
     }
+
+    my-card[fancy] {
+      --my-card-fancy-bg: #FF0000;
+    }
   </style>
 </head>
 
 <body>
   <h1>polaris-chip</h1>
-  <!-- this is going to do whatever the tag's defaults are -->
   <polaris-chip title="News of Record" link="https://psu.edu/"></polaris-chip>
   <polaris-chip title="Faculty and Staff"></polaris-chip>
   <polaris-chip title="Sports are the only thing that matter"></polaris-chip>
@@ -33,17 +36,19 @@
   <h1>my-card</h1>
 
   <my-card
+    fancy
     title="Cool hockey tourney"
     image="https://raw.githubusercontent.com/jakebutler22/usahockeypicture/refs/heads/main/IMG_0416.jpeg"
     alt="Hockey photo"
-    description="Playing hockey and inevitably lose to the Canadians."
-  ></my-card>
+  >
+    <p>Playing hockey and inevitably lose to the Canadians. America is great and Canadians <strong>SUCK</strong>!</p>
+  </my-card>
 
   <my-card
     title="Happy dog"
     image="https://github.com/jakebutler22/usahockeypicture/blob/main/IMG_6680.jpeg?raw=true"
     alt="Dog photo"
-    description="This is a the best card instance."
+    description="Look how happy this dog is."
   ></my-card>
 
   <my-card
@@ -67,7 +72,6 @@
     description="GET THIS AWAY FROM ME"
   ></my-card>
 
-  <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
 </body>

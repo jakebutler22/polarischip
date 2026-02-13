@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 
 /**
  * Now it's your turn. Here's what we need to try and do:
- * 1. Get you HTML from your card working in here 
+ * 1. Get you HTML from your card working in here
  * 2. Get your CSS rescoped as needed to work here
  */
 
@@ -17,7 +17,10 @@ export class MyCard extends LitElement {
       title: { type: String },
       image: { type: String },
       alt: { type: String },
-      description: { type: String }
+      description: { type: String },
+
+      // boolean attribute
+      fancy: { type: Boolean, reflect: true },
     };
   }
 
@@ -28,17 +31,29 @@ export class MyCard extends LitElement {
     this.alt = 'Photo of Jake Butler playing hockey';
     this.description =
       'Playing hockey and inevitably lose to the Canadians. Change the title and picture for a happy dog.';
+
+    // default fancy value
+    this.fancy = false;
+  }
+
+  // details toggle changes facy 
+  openChanged(e) {
+    if (e.target.hasAttribute('open')) {
+      this.fancy = true;
+    } else {
+      this.fancy = false;
+    }
   }
 
   static get styles() {
     return css`
       :host {
         font-size: 16px;
-      }
+        display: block;
 
-      /* controls */
-      .control-wrapper {
-        margin-bottom: 16px;
+        /* css variables */
+        --my-card-bg: green;
+        --my-card-fancy-bg: red;
       }
 
       /* card container */
@@ -49,15 +64,22 @@ export class MyCard extends LitElement {
         box-shadow: 0 4px 8px rgba(1,1,1,1);
         margin: 8px;
         padding: 8px;
-        background-color: green;
+        background-color: var(--my-card-bg);
         opacity: 0.85;
         transition: 0.6s all ease-in-out;
+      }
+
+      :host([fancy]) .card {
+        background-color: var(--my-card-fancy-bg);
+        border: 2px solid fuchsia;
+        box-shadow: 10px 5px 5px red;
       }
 
       /* card image */
       .card-image {
         width: 400px;
         height: 100%;
+        object-fit: cover;
       }
 
       /* card text wrapper */
@@ -76,9 +98,24 @@ export class MyCard extends LitElement {
         opacity: 1;
       }
 
-      /* background toggle class */
-      .card.fancy {
-        background-color: red;
+      /* details/summary styling */
+      details summary {
+        text-align: left;
+        font-size: 16px;
+        padding: 8px 0;
+        cursor: pointer;
+      }
+
+      details[open] summary {
+        font-weight: bold;
+      }
+
+      details div {
+        border: 2px solid black;
+        text-align: left;
+        padding: 8px;
+        height: 70px;
+        overflow: auto;
       }
     `;
   }
@@ -86,14 +123,19 @@ export class MyCard extends LitElement {
   render() {
     return html`
       <div class="card">
-        <img
-          class="card-image"
-          src="${this.image}"
-          alt="${this.alt}"
-        />
+        <img class="card-image" src="${this.image}" alt="${this.alt}" />
         <div class="card-text">
           <h3 class="card-title">${this.title}</h3>
-          <p>${this.description}</p>
+
+          <!-- NEW requirement: slot + details/summary
+               Slot supports HTML; description remains as fallback -->
+          <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+            <summary>Description</summary>
+            <div>
+              <slot>${this.description}</slot>
+            </div>
+          </details>
+
         </div>
       </div>
     `;
