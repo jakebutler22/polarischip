@@ -85,6 +85,14 @@ export class MyCard extends LitElement {
         object-fit: cover;
       }
 
+      /* meme-maker sizing */
+      meme-maker {
+        width: 400px;
+        height: 300px;
+        display: block;
+      }
+
+
       /* card text wrapper */
       .card-text {
         width: 300px;
