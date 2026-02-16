@@ -1,5 +1,8 @@
 import { LitElement, html, css } from 'lit';
 
+// added for meme-maker
+import "@haxtheweb/meme-maker/meme-maker.js";
+
 /**
  * Now it's your turn. Here's what we need to try and do:
  * 1. Get you HTML from your card working in here
@@ -123,12 +126,17 @@ export class MyCard extends LitElement {
   render() {
     return html`
       <div class="card">
-        <img class="card-image" src="${this.image}" alt="${this.alt}" />
+
+        <meme-maker
+          alt="${this.alt}"
+          image-url="${this.image}"
+          top-text="${this.title}"
+          bottom-text="${this.description}"
+        ></meme-maker>
+
         <div class="card-text">
           <h3 class="card-title">${this.title}</h3>
 
-          <!-- NEW requirement: slot + details/summary
-               Slot supports HTML; description remains as fallback -->
           <details ?open="${this.fancy}" @toggle="${this.openChanged}">
             <summary>Description</summary>
             <div>
