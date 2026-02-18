@@ -48,88 +48,86 @@ export class MyCard extends LitElement {
     }
   }
 
-  static get styles() {
-    return css`
-      :host {
-        font-size: 16px;
-        display: block;
+static get styles() {
+  return css`
+    :host {
+      font-size: 16px;
+      display: block;
+      --my-card-bg: green;
+      --my-card-fancy-bg: red;
+    }
 
-        /* css variables */
-        --my-card-bg: green;
-        --my-card-fancy-bg: red;
-      }
+    .card {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  width: 750px;
+  height: 320px;
+  border: 2px solid gray;
+  box-shadow: 0 4px 8px rgba(1,1,1,1);
+  margin: 40px 0; /* increased vertical spacing */
+  padding: 8px;
+  background-color: var(--my-card-bg);
+  opacity: 0.85;
+  transition: 0.6s all ease-in-out;
+    }
 
-      /* card container */
-      .card {
-        font-size: 1em;
-        display: inline-flex;
-        border: 2px solid gray;
-        box-shadow: 0 4px 8px rgba(1,1,1,1);
-        margin: 8px;
-        padding: 8px;
-        background-color: var(--my-card-bg);
-        opacity: 0.85;
-        transition: 0.6s all ease-in-out;
-      }
+    .card:hover {
+      opacity: 1;
+    }
 
-      :host([fancy]) .card {
-        background-color: var(--my-card-fancy-bg);
-        border: 2px solid fuchsia;
-        box-shadow: 10px 5px 5px red;
-      }
+    :host {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 20px;
+  --my-card-bg: green;
+  --my-card-fancy-bg: red;
+}
 
-      /* card image */
-      .card-image {
-        width: 400px;
-        height: 100%;
-        object-fit: cover;
-      }
+    .card-image {
+      width: 400px;
+      height: 300px;
+      object-fit: cover;
+    }
 
-      /* meme-maker sizing */
-      meme-maker {
-        width: 400px;
-        height: 300px;
-        display: block;
-      }
+    meme-maker {
+      width: 400px;
+      height: 300px;
+      flex-shrink: 0;
+      display: block;
+    }
 
+    .card-text {
+      width: 300px;
+      height: 300px;
+      padding: 0 8px 8px 8px;
+      color: black;
+      background-color: white;
+      margin-left: 8px;
+      overflow: auto;
+    }
 
-      /* card text wrapper */
-      .card-text {
-        width: 300px;
-        padding: 0 8px 8px 8px;
-        color: black;
-        background-color: white;
-        margin: 0 0 0 8px;
-        height: 300px;
-        overflow: auto;
-      }
+    /* details/summary styling */
+    details summary {
+      text-align: left;
+      font-size: 16px;
+      padding: 8px 0;
+      cursor: pointer;
+    }
 
-      /* hover and focus state */
-      .card:hover {
-        opacity: 1;
-      }
+    details[open] summary {
+      font-weight: bold;
+    }
 
-      /* details/summary styling */
-      details summary {
-        text-align: left;
-        font-size: 16px;
-        padding: 8px 0;
-        cursor: pointer;
-      }
-
-      details[open] summary {
-        font-weight: bold;
-      }
-
-      details div {
-        border: 2px solid black;
-        text-align: left;
-        padding: 8px;
-        height: 70px;
-        overflow: auto;
-      }
-    `;
-  }
+    details div {
+      border: 2px solid black;
+      text-align: left;
+      padding: 8px;
+      height: 70px;
+      overflow: auto;
+    }
+  `;
+}
 
   render() {
     return html`
